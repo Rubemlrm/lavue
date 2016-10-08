@@ -5,7 +5,8 @@ namespace App\Repositories;
 use App\Models\Setting;
 use App\Repositores\Contracts\SettingRepositoryInterface;
 
-class SettingRepository implements SettingRepositoryInterface {
+class SettingRepository implements SettingRepositoryInterface
+{
 
     protected $setting;
 
@@ -31,7 +32,8 @@ class SettingRepository implements SettingRepositoryInterface {
      * @param  array  $fields fields we need for seo
      * @return Setting object
      */
-    public function getSeo($id, $fields = []){
+    public function getSeo($id, $fields = [])
+    {
         return $this->setting->find($id)->get($fields);
     }
 }

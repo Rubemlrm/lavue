@@ -1,9 +1,8 @@
 <?php
 
-namespace \App\Repositories;
+namespace App\Repositories;
 
-
-use \App\Repositories\Contracts\LoggerRepositoryInterface;
+use App\Repositories\Contracts\LoggerRepositoryInterface;
 use App\Models\Logger;
 
 class LoggerRepository implements LoggerRepositoryInterface

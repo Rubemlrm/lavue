@@ -11,6 +11,7 @@ class RolesController extends Controller
 {
     public function index(RoleRepositoryInterface $roles)
     {
-        return json_encode($roles->get());
+
+        return json_encode($roles->all());
     }
 }
