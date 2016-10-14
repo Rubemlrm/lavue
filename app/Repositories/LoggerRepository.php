@@ -2,31 +2,35 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Contracts\RepositoryInterface;
 use App\Repositories\Contracts\LoggerRepositoryInterface;
+use App\Repositories\Repository;
 use App\Models\Logger;
 
-class LoggerRepository implements LoggerRepositoryInterface
+class LoggerRepository extends Repository implements LoggerRepositoryInterface
 {
-
-    protected $logger;
+    /**
+     * model variable
+     * @var Model
+     */
+    protected $model;
 
     /**
-     * @param Logger
+     * class construct;
      */
-    public function __construct(Logger $logger)
+    public function __construct()
     {
-        $this->logger = $logger;
+        $this->model = $this->model();
+        parent::__construct();
     }
 
     /**
-     * Search log by id
-     *
-     * @param  integer $id log id
-     * @return logger object
+     * define class model
+     * @return model
      */
-    public function find($id)
+    public function model()
     {
-        return $this->logger->find($id)->first();
+        return App\Models\Logger::class;
     }
 
     /**
@@ -46,6 +50,16 @@ class LoggerRepository implements LoggerRepositoryInterface
      */
     public function getLogsByController($controller)
     {
-        return $this->logger->where(['controller' => $controller]);
+        return $this->model->where(['controller' => $controller]);
+    }
+
+    /**
+     * get all logs for the given level
+     * @param  string $level log level for search
+     * @return Logger    object with all logs that match this request
+     */
+    public function getLogsByLevel($level)
+    {
+        return $this->model->where(['level' => $level]);
     }
 }

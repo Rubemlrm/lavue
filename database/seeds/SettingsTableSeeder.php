@@ -11,8 +11,10 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('settings')->insert([
-            'site_name' => 'Backend',
+        DB::table("settings")->insert([
+            "site_name" => "Backend",
+            "site_description" => "backend",
+            "contact_email" => "email@email.pt"
         ]);
     }
 }

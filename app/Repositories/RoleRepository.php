@@ -2,73 +2,37 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Contracts\RoleRepositoryInterface;
-use App\Models\Role;
+use App\Repositories\Contracts\RepositoryInterface;
+use App\Repositories\Repository;
 
-class RoleRepository implements RoleRepositoryInterface
+class RoleRepository extends Repository
 {
-
-    protected $role;
+    /**
+     * model variable
+     * @var Model
+     */
+    protected $model;
 
     /**
-     * @param Role $role
+     * class construct;
      */
-    public function __construct(Role $role)
+    public function __construct()
     {
-        $this->role = $role;
-    }
-
-     /**
-     * @param array $columns
-     * @return mixed
-     */
-    public function all($columns = array('*')) {
-        return $this->role->get($columns);
+        $this->model = $this->model();
+        parent::__construct();
     }
 
     /**
-     * @param int $perPage
-     * @param array $columns
+     * Specify Model class name
      * @return mixed
      */
-    public function paginate($perPage = 15, $columns = array('*')) {
-        return $this->role->paginate($perPage, $columns);
-    }
-
-    /**
-     * @param array $data
-     * @return mixed
-     */
-    public function create(array $data) {
-        return $this->role->create($data);
-    }
-
-    /**
-     * @param array $data
-     * @param $id
-     * @param string $attribute
-     * @return mixed
-     */
-    public function update(array $data, $id, $attribute="id") {
-        return $this->role->where($attribute, '=', $id)->update($data);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function delete($id) {
-        return $this->role->destroy($id);
-    }
-
-    /**
-     * Search role by id
-     *
-     * @param  integer $id role id
-     * @return Role object
-     */
-    public function find($id)
+    public function model()
     {
-        return $this->role->find($id);
+        return \App\Models\Role::class;
+    }
+
+    public function getFirst()
+    {
+        return $this->model->orderBy("id")->first();
     }
 }
