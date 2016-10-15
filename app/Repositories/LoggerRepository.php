@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Contracts\RepositoryInterface;
-use App\Repositories\Contracts\LoggerRepositoryInterface;
-use App\Repositories\Repository;
 use App\Models\Logger;
+use App\Repositories\Contracts\LoggerRepositoryInterface;
+use App\Repositories\Contracts\RepositoryInterface;
+use App\Repositories\Repository;
 
 class LoggerRepository extends Repository implements LoggerRepositoryInterface
 {
@@ -20,8 +20,7 @@ class LoggerRepository extends Repository implements LoggerRepositoryInterface
      */
     public function __construct()
     {
-        $this->model = $this->model();
-        parent::__construct();
+        $this->model = new \App\Models\Logger;
     }
 
     /**
@@ -30,17 +29,17 @@ class LoggerRepository extends Repository implements LoggerRepositoryInterface
      */
     public function model()
     {
-        return App\Models\Logger::class;
+        return 'App\Models\Logger';
     }
 
-    /**
+ /**
      * get all logs for the given level
      * @param  string $level log level for search
      * @return Logger    object with all logs that match this request
      */
     public function getLogsByLevel($level)
     {
-        return $this->logger->where(['level' => $level]);
+        return $this->model->where('level', '=', $level);
     }
 
     /**
@@ -50,16 +49,17 @@ class LoggerRepository extends Repository implements LoggerRepositoryInterface
      */
     public function getLogsByController($controller)
     {
-        return $this->model->where(['controller' => $controller]);
+        return $this->model->where('controller', '=', $controller);
     }
 
     /**
-     * get all logs for the given level
-     * @param  string $level log level for search
-     * @return Logger    object with all logs that match this request
-     */
-    public function getLogsByLevel($level)
+     * get stats by type of controller or level
+     * @param  string $type controller / level
+     * @param  string $value condition for search
+     * @return Logger
+    */
+    public function getStatsByType($type, $value)
     {
-        return $this->model->where(['level' => $level]);
+        return $this->model->where('controller', '=', $value)->groupBy($type)->count();
     }
 }

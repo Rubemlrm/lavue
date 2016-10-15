@@ -1,10 +1,10 @@
 <?php
 
-namespace\App\Repositories;
+namespace App\Repositories;
 
+use App\Repositories\Contracts\RepositoryInterface;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
-use \App\Repositories\Contracts\RepositoryInterface;
 
 abstract class Repository implements RepositoryInterface
 {
@@ -19,7 +19,7 @@ abstract class Repository implements RepositoryInterface
      * private var model
      * @var Model
      */
-    private $model;
+    protected $model;
 
     /**
      * @param App $app
@@ -34,7 +34,7 @@ abstract class Repository implements RepositoryInterface
      * Specifiy model class name
      * @return mixed
      */
-    abstract public function model();
+    public abstract function model();
 
     /**
      * Inities a Eloquent Builder object
@@ -43,12 +43,12 @@ abstract class Repository implements RepositoryInterface
      */
     public function makeModel()
     {
-        $model = $this->app->make($this->model);
 
-        if (!$model instanceof Model) {
-            throw new Exception("Class {$this->model} must be an instance of Model");
+        $this->model = $this->app->make($this->model());
+        if (!$this->model instanceof Model) {
+            throw new Exception("Class {$this->model()} must be an instance of Model");
         }
-        return $this->model = $model->newQuery();
+        return $this->model;
     }
 
     /**

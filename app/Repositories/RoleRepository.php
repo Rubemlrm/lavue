@@ -14,12 +14,11 @@ class RoleRepository extends Repository
     protected $model;
 
     /**
-     * class construct;
+     * class construct
      */
     public function __construct()
     {
-        $this->model = $this->model();
-        parent::__construct();
+        $this->model = new \App\Models\Role;
     }
 
     /**
@@ -28,11 +27,6 @@ class RoleRepository extends Repository
      */
     public function model()
     {
-        return \App\Models\Role::class;
-    }
-
-    public function getFirst()
-    {
-        return $this->model->orderBy("id")->first();
+        return '\App\Models\Role';
     }
 }

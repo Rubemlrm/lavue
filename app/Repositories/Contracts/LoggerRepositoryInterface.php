@@ -18,4 +18,11 @@ interface LoggerRepositoryInterface
      */
     public function getLogsByController($controller);
 
+    /**
+     * get stats by type of controller or level
+     * @param  string $type controller / level
+     * @param  string $value condition for search
+     * @return Logger
+     */
+    public function getStatsByType($type, $value);
 }

@@ -7,8 +7,16 @@ php:
 
 sudo: false
 
-install:
-  - travis_retry composer install --no-interaction --prefer-source
+services:
+  - mysql
+
+before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database app;'
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+  - php artisan migrate
+  - php artisan db:seed
   - php artisan key:generate
 
 script: vendor/bin/phpunit

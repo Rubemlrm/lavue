@@ -2,28 +2,34 @@
 
 namespace App\Repositores;
 
-use App\Repositories\Contracts\UserRepositoryInterface;
 use App\Models\User;
+use App\Repositories\Contracts\RepositoryInterface;
+use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Repositories\Repository;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository extends Repository implements UserRepositoryInterface
 {
-    protected $user;
-
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
+   /**
+     * model variable
+     * @var Model
+     */
+    protected $model;
 
     /**
-     * Search user by id
-     *
-     * @param  integer $id user id
-     * @return User object
+     * class construct
      */
-    public function find($id)
+    public function __construct()
     {
-        return $this->user->find($id);
+        $this->model = new \App\Models\User;
+    }
+
+    /**
+     * Specify Model class name
+     * @return mixed
+     */
+    public function model()
+    {
+        return '\App\Models\User';
     }
 
     /**
@@ -34,7 +40,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getByEmail($email)
     {
-        return $this->user->where(['email' => $email])->first();
+        return $this->model->where(['email' => $email])->first();
     }
 
     /**
@@ -44,7 +50,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getUserRole($id)
     {
-        throw new \Exception('Method not implemented');
+        return $this->model->where(['id' => $id])->role()->first();
     }
 
     /**
@@ -54,6 +60,6 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getUsersByRole($role)
     {
-        return $this->user->where(['role_id' => $role])->get();
+        return $this->model->where(['role_id' => $role])->get();
     }
 }

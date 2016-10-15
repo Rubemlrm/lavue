@@ -4,36 +4,31 @@ namespace App\Repositories;
 
 use App\Models\Setting;
 use App\Repositores\Contracts\SettingRepositoryInterface;
+use App\Repositories\Contracts\RepositoryInterface;
+use App\Repositories\Repository;
 
-class SettingRepository implements SettingRepositoryInterface
+class SettingRepository extends Repository implements SettingRepositoryInterface
 {
+    /**
+     * model variable
+     * @var Model
+     */
+    protected $model;
 
-    protected $setting;
-
-    public function __construct(Setting $setting)
+    /**
+     * class construct
+     */
+    public function __construct()
     {
-        $this->setting = $setting;
+        $this->model = new \App\Models\Setting;
     }
 
     /**
-     * Search settings by id
-     *
-     * @param  integer $id settting id
-     * @return Setting object
+     * Specify Model class name
+     * @return mixed
      */
-    public function find($id)
+    public function model()
     {
-        return $this->setting->find($id);
-    }
-
-    /**
-     * get seo fields of settings
-     * @param  integer $id     setting id
-     * @param  array  $fields fields we need for seo
-     * @return Setting object
-     */
-    public function getSeo($id, $fields = [])
-    {
-        return $this->setting->find($id)->get($fields);
+        return '\App\Models\Setting';
     }
 }
