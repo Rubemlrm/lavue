@@ -8,15 +8,13 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
+//require('bootstrap-sass');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean
  * and simple, leaving you to focus on building your next great project.
  */
-
-window.Vue = require('vue');
 require('vue-resource');
 
 /**
@@ -30,6 +28,19 @@ Vue.http.interceptors.push((request, next) => {
 
     next();
 });
+
+
+/**
+ * custom configs
+ */
+//start router
+window.VueRouter = require('vue-router');
+
+//enabe debug
+Vue.config.debug = true;
+
+//set root options
+Vue.http.options.root = "/api";
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

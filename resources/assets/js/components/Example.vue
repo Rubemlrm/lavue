@@ -18,6 +18,9 @@
     export default {
         mounted() {
             console.log('Component ready.')
+        },
+        ready(){
+            console.log("coasfasf");
         }
     }
 </script>
