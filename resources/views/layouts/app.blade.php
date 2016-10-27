@@ -10,16 +10,16 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+
+
+        <link rel="stylesheet" href="css/app.css">
 
         <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" type="text/css" href="{{ asset("/bower_components/AdminLTE/dist/css/AdminLTE.min.css")}}">
-         <link rel="stylesheet" type="text/css" href="{{ asset("/bower_components/AdminLTE/dist/css/skins/_all-skins.min.css")}}">
-         <link rel="stylesheet" href="css/app.css"  rel="stylesheet" type="text/css">
+
+
           <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -27,33 +27,32 @@
     </script>
     </head>
     <body>
-<body class="hold-transition skin-black sidebar-collapse sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
+<body>
+
 
 
 
   <!-- =============================================== -->
 
  <div id="app">
-  <navbar></navbar>
-  <sidebar></sidebar>
+
+
  </div>
 
   <!-- =============================================== -->
 
 
-</div>
 
         <script src="js/vue.js"></script>
-        <script src="js/app.js"></script>
-        <script src="{{asset("/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js")}}"></script>
-<script src="{{asset("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js")}}"></script>
-<script src="{{asset("/bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js")}}"></script>
-<!-- FastClick -->
-<script src="{{asset("/bower_components/AdminLTE/plugins/fastclick/fastclick.js")}}"></script>
 
-        <script src="{{asset("/bower_components/AdminLTE/dist/js/app.min.js")}}"></script>
+
+
+       <!-- Compressed JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+ <script src="js/app.js"></script>
+
     </body>
 </html>
 

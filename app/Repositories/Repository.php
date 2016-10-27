@@ -99,6 +99,13 @@ abstract class Repository implements RepositoryInterface
         return $this->model->find($id, $collumns);
     }
 
+    /**
+     * find by attribute
+     * @param  string $attribute atribute name
+     * @param  mixed $value
+     * @param  array  $collumns
+     * @return model object
+     */
     public function findBy($attribute, $value, $collumns = ['*'])
     {
         return $this->model->where($attribute, '=', $value)->first($collumns);
