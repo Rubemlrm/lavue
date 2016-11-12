@@ -2,6 +2,16 @@
 
 namespace App\Models;
 
+/**
+ *
+ * Class Setting
+ * @package lavue
+ * @subpackage models
+ * @author  Rubem Mota rubemmota89@gmail.com
+ * @version 1.0
+ * @copyright 2016 Rubem Mota
+ */
+
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model

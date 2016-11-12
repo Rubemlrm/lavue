@@ -14,7 +14,7 @@ class SettingsTableSeeder extends Seeder
         DB::table("settings")->insert([
             "site_name" => "Backend",
             "site_description" => "backend",
-            "contact_email" => "email@email.pt"
+            "contact_email" => "devop@lavue.app"
         ]);
     }
 }

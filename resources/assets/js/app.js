@@ -3,7 +3,9 @@ import VueRouter from 'vue-router'
 import vueResource from 'vue-resource'
 import App from './components/app.vue'
 import Login from './components/login.vue'
-import Users from './components/users.vue'
+import userIndex from './components/users/index.vue'
+import userEdit from './components/users/edit.vue'
+import userAdd from './components/users/add.vue'
 Vue.use(VueRouter)
 Vue.use(vueResource)
 
@@ -28,17 +30,18 @@ Vue.component('navbar',require('./components/navbar.vue'))
 
 //init route list
 const routes = [
-      { path: '/users', component: Users }
+      { path: '/users', component: userIndex },
+      { path: '/users/edit', component: userEdit },
+      { path: '/users/add', component: userAdd }
     ];
 
-//init router
+//init app
 var router = new VueRouter({
    routes,
     history: true,
     root: '/admin',
     saveScrollPosition: true,
-    transitionOnLoad: true,
-    hashbang: true
+    transitionOnLoad: true
 });
 
 

@@ -62,4 +62,15 @@ class UserRepository extends Repository implements UserRepositoryInterface
     {
         return $this->model->where(['role_id' => $role])->get();
     }
+
+    /**
+     * Get all
+     *
+     * @param  array $collumns
+     * @return model object
+     */
+    public function all($collumns = ['*'])
+    {
+        return $this->model->with('role')->get($collumns);
+    }
 }

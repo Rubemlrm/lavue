@@ -1,16 +1,15 @@
 <style></style>
 
 <template>
-  <div>
-    <navbar></navbar>
-    <div class="container-fluid">
+ <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+     <navbar></navbar>
       <sidebar></sidebar>
+       <main class="mdl-layout__content mdl-color--grey-100">
+            <router-view></router-view>
+        </main>
+ </div>
 
-      <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
-         <router-view></router-view>
-      </div>
-    </div>
-  </div>
+
  </template>
 
 <script>

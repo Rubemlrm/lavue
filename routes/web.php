@@ -15,13 +15,14 @@ Route::get('/', ['middleware' => 'guest', function () {
     return view('login');
 }]);
 
+Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
-       Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'admin'], function () {
         Route::get('/{vue_capture?}', function () {
-            return view('home');
+            return view('layouts.app');
         })->where('vue_capture', '[\/\w\.-]*');
     });
 });
 
-Auth::routes();
+
 

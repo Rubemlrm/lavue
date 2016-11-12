@@ -2,6 +2,16 @@
 
 namespace App\Models;
 
+/**
+ *
+ * Class Role
+ * @package lavue
+ * @subpackage Models
+ * @author  Rubem Mota rubemmota89@gmail.com
+ * @version 1.0
+ * @copyright 2016 Rubem Mota
+ */
+
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model

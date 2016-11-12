@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Administrator',
-            'email' => 'rubemmota89@gmail.com',
+            'email' => 'devop@lavue.app',
             'password' => bcrypt('secret'),
             'role_id' => 1
         ]);
