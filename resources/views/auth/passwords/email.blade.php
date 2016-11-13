@@ -1,47 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.no-auth')
 
 <!-- Main Content -->
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+ <div class="mdl-card__supporting-text mdl-grid">
+                    <form action="{{ url('/password/email') }}" method="POST">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_email">
+                                email
+                            </label>
+                            <input autofocus="" class="mdl-textfield__input" id="textfield_email" name="email" required="" type="email" value="{{ old('email') }}" required/>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
+
+                        <div align="center" class="mdl-cell mdl-cell--12-col ">
+                            @if ($errors->has('email'))
+                            <span class="mdl-color-text--red-400">
+                                <strong>
+                                    {{ $errors->first('email') }}
+                                </strong>
+                            </span>
+                            @endif
+                        </div>
+
+                        <div align="center" class="mdl-cell mdl-cell--12-col send-button">
+                            <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">
+                                 Send Password Reset Link
+                            </button>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
+
+

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', ['middleware' => 'guest', function () {
-    return view('login');
+    return view('auth.login');
 }]);
 
 Auth::routes();

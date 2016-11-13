@@ -4,7 +4,7 @@
 
 <div class="mdl-grid demo-content">
   <div class="mdl-cell mdl-cell--1-offset">
-    <h2> User List</h2>
+    <h4> User List</h4>
   </div>
             <table class="mdl-data-table mdl-shadow--2dp mdl-cell--10-col mdl-cell--1-offset">
               <thead>
@@ -12,6 +12,7 @@
                   <th>Username</th>
                   <th>Email</th>
                   <th>Role</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -47,11 +48,11 @@
             <dialog class="mdl-dialog">
     <div class="mdl-dialog__content">
       <p>
-        Allow this site to collect usage data to improve your experience?
+        Do you want delete this user ?
       </p>
     </div>
     <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-      <button type="button" class="mdl-button">Agree</button>
+      <button type="button" class="mdl-button" @click="deleteUser">Agree</button>
       <button type="button" class="mdl-button close" @click="hideModal">Disagree</button>
     </div>
   </dialog>
@@ -65,24 +66,31 @@
 
 export default {
 
-    data: function() {
+    data() {
         return { users : []}
     },
 
-    created: function() {
+    created() {
         var vm = this;
         this.updateList();
     },
 
     methods: {
-        updateList: function() {
+
+        //Get uer list
+        updateList() {
              this.$http.get('/api/users').then((response) => {
                 this.users = response.body;
               }, (response) => {
                 console.log(response);
               });
         },
-        showModal: function() {
+
+        deleteUser() {
+
+        },
+
+        showModal() {
           var dialog = document.querySelector('dialog');
 
           if (! dialog.showModal) {
@@ -90,7 +98,7 @@ export default {
           }
           dialog.showModal();
         },
-        hideModal: function() {
+        hideModal() {
            var dialog = document.querySelector('dialog');
            dialog.close();
         }

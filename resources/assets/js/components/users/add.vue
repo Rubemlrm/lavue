@@ -8,51 +8,17 @@
 
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col">
-        <h4>Form Prototype</h4>
+        <h4>Add User</h4>
       </div>
     </div>
 
 
-    <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col">
+    <div class="mdl-grid md-cell--4-offset ">
+      <div class="mdl-cell mdl-cell--8-col">
         <form action="#" >
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input v-model="name" class="mdl-textfield__input" type="text" id="name" />
-                <label class="mdl-textfield__label" for="text">Name</label>
-              </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input  v-model="email" class="mdl-textfield__input" type="email" name="email" id="email"  />
-                <label class="mdl-textfield__label" for="email">Email</label>
-              </div>
-            </div>
-          </div>
 
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input  v-model="password" class="mdl-textfield__input" type="password" name="password" id="password" />
-                <label class="mdl-textfield__label" for="password">Password</label>
-              </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col">
 
-            </div>
-          </div>
-
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield">
-                <select  v-model="role_id" name="role_id" id="role">
-                    <option v-for="role in roles" :value="role.id">{{role.name}}</option>
-                </select>
-
-              </div>
-            </div>
-          </div>
+          <userForm :user="user"></userForm>
 
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--10-col">
@@ -78,67 +44,68 @@
 
 
 <script>
+  import userForm from './form.vue'
     export default {
-        created: function() {
-            var vm = this;
-        },
 
-        data: function () {
-            return {
-                name: '',
-                password: '',
-                email: '',
-                role_id: '1',
-                roles: []
-            };
-        },
-
-        created: function() {
-            var vm = this;
-            this.getRoles();
-        },
-
-        methods: {
-            addUser: function() {
-                var vm = this;
-                var data = {
-                    email: this.email,
-                    name: this.name,
-                    password: this.password,
-                    role_id: this.role_id
-                };
-
-                this.$http.post('/api/users', data).then((response) => {
-                    console.log(response);
-                }, (response) => {
-                    this.displayError(response.body);
-                });
-            },
-
-            getRoles() {
-                this.$http.get('/api/roles').then((response) => {
-                this.roles = response.body;
-              }, (response) => {
-                console.log(response);
-              });
-            },
-
-            displayError(error) {
-                  var snackbarContainer = document.querySelector('#demo-snackbar-example');
-
-                  var message = "";
-                  $.each(error, function(key,value){
-                    message += "" + value[0] + "\n";
-                  })
-
-                var data = {
-                  message: message,
-                  timeout: 5000,
-                };
-                snackbarContainer.MaterialSnackbar.showSnackbar(data);
-
-            }
+      data() {
+        return {
+          user: {
+            name: '',
+            password: '',
+            email: '',
+            role_id: '1'
+          },
         }
+      },
+
+    created() {
+      var vm = this;
+    },
+
+    methods: {
+      addUser() {
+        var vm = this;
+        var data = {
+          email: this.user.email,
+          name: this.user.name,
+          password: this.user.password,
+          password2: this.user.password2,
+          role_id: this.user.role_id
+        };
+
+        this.$http.post('/api/users', data).then((response) => {
+          if(response.body.status == "error") {
+            this.displayError(response.body.errors);
+          } else {
+            this.displayError(response.body.success);
+          }
+          console.log(response);
+        }, (response) => {
+          this.displayError(response.body);
+          });
+        },
+
+
+
+      displayError(error) {
+        var snackbarContainer = document.querySelector('#demo-snackbar-example');
+
+        var message = "";
+          $.each(error, function(key,value){
+          message += "" + value[0] + "\n";
+        })
+
+        var data = {
+          message: message,
+          timeout: 5000,
+        };
+          snackbarContainer.MaterialSnackbar.showSnackbar(data);
+
+        }
+    },
+    components: {
+      'userForm': userForm
     }
+  }
 
 </script>

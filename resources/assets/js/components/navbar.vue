@@ -35,14 +35,18 @@
                     Contact
                 </li>
                 <li class="mdl-menu__item">
-                    Legal information
+                    <a href="" onclick="event.preventDefault();                                                  document.getElementById('logout-form').submit();">Logout</a>
                 </li>
             </ul>
         </div>
+
     </header>
 </template>
 
 <script>
   export default {
+
+
+
   };
 </script>

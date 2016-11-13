@@ -1,68 +1,57 @@
-@extends('layouts.app')
+@extends('layouts.no-auth')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+           <div class="mdl-card__supporting-text mdl-grid">
+                    <form action="{{ url('/login') }}" method="POST">
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_email">
+                                email
+                            </label>
+                            <input autofocus="" class="mdl-textfield__input" id="textfield_email" name="email" required="" type="email"/>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <label class="mdl-textfield__label mdl-color-text--grey" for="textfield_password">
+                                Password
+                            </label>
+                            <input class="mdl-textfield__input" id="textfield_password" name="password" type="password"/>
+                        </div>
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="remember">
+                                <input class="mdl-checkbox__input" id="remember" type="checkbox">
+                                    <span class="mdl-checkbox__label">
+                                        Remember me
                                     </span>
-                                @endif
-                            </div>
+                                </input>
+                            </label>
                         </div>
+                        <div align="center" class="mdl-cell mdl-cell--12-col ">
+                            @if ($errors->has('email'))
+                            <span class="mdl-color-text--red-400">
+                                <strong>
+                                    {{ $errors->first('email') }}
+                                </strong>
+                            </span>
+                            @endif
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('password'))
+                            <span class="mdl-color-text--red-400">
+                                <strong>
+                                    {{ $errors->first('password') }}
+                                </strong>
+                            </span>
+                            @endif
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
+                        <div align="center" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <a href="{{ url('/password/reset') }}">
+                                Forgot Your Password?
+                            </a>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
+                        <div align="center" class="mdl-cell mdl-cell--12-col send-button">
+                            <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored mdl-color--primary" type="submit">
+                                Log In
+                            </button>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

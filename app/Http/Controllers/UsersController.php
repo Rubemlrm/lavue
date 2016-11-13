@@ -14,7 +14,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Requests\UserFormRequest;
-use App\Repositories\UserRepositorypository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 /**
@@ -49,7 +49,7 @@ class UsersController extends Controller
 
         //validate user creation
         if ($user->create($data)) {
-            return json_encode("true");
+            return json_encode(["status" => "success", "message" => "cool"]);
         }
 
         return json_encode("false");

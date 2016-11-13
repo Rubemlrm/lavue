@@ -14,6 +14,7 @@ namespace App\Http\Requests;
 
 use App\Repositories\UserRepository;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Validates user input to check if all input is validated by the rules
@@ -26,9 +27,10 @@ class UserFormRequest extends FormRequest
      * @var array
      */
     protected $rules = [
-        'password' => 'min:3|max:25,',
+        'password' => 'min:3|max:25|required',
         'email' => 'min:5|max:35|email|required|unique:users,email,',
-        'name' => 'min:5|required'
+        'name' => 'min:5|required',
+        'password2' => 'required|same:password'
     ];
 
     /**
@@ -62,8 +64,33 @@ class UserFormRequest extends FormRequest
         $messages = [
             'unique' => "The field :attribute must be unique",
             'required' => "The field :attribute must be filled",
+            'same' => 'Passwords must be equal'
         ];
 
         return $messages;
+    }
+
+    /**
+     * OVERRIDE response message
+     */
+
+    /**
+     * Get the proper failed validation response for the request.
+     *
+     * @param  array  $errors
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function response(array $errors)
+    {
+        $message = [];
+        if ($this->expectsJson()) {
+            $message['status'] = 'error';
+            $message["errors"] = $errors;
+            return new JsonResponse($message, 200);
+        }
+
+        return $this->redirector->to($this->getRedirectUrl())
+                                        ->withInput($this->except($this->dontFlash))
+                                        ->withErrors($errors, $this->errorBag);
     }
 }
