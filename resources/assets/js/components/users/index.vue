@@ -1,13 +1,24 @@
 <style></style>
 
 <template>
+<div>
+ <section class="content-header">
+      <h1>
+        User List
+      </h1>
 
-<div class="mdl-grid demo-content">
-  <div class="mdl-cell mdl-cell--1-offset">
-    <h4> User List</h4>
-  </div>
-            <table class="mdl-data-table mdl-shadow--2dp mdl-cell--10-col mdl-cell--1-offset">
-              <thead>
+    </section>
+<section class="content">
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box with-border">
+            <div class="box-header">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <thead>
                 <tr>
                   <th>Username</th>
                   <th>Email</th>
@@ -23,43 +34,35 @@
                   <td>
 
                   <router-link to="/users/edit">
-                    <button class="mdl-button mdl-button--icon">
-                        <i class="material-icons">edit</i>
-                    </button>
+                    <a @click="showModal">
+                      <i class="fa fa-edit"></i>
+                    </a>
                   </router-link>
 
-                    <button class="mdl-button mdl-button--icon"  @click="showModal">
-                      <i class="material-icons">delete</i>
-                    </button>
+                    <a @click="showModal">
+                      <i class="fa fa-ban"></i>
+                    </a>
 
               </td>
               </tr>
-              </tbody>
-            </table>
-
-            <div class="mdl-cell mdl-cell--1-col mdl-cell--10-offset">
-              <router-link to="/users/add">
-              <button class="mdl-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" >
-                <i class="material-icons">person_add</i> Add
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+            <router-link to="/users/add">
+              <button class="btn btn-info pull-right" >
+                Add
             </button>
             </router-link>
-            </div>
-
-            <dialog class="mdl-dialog">
-    <div class="mdl-dialog__content">
-      <p>
-        Do you want delete this user ?
-      </p>
-    </div>
-    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-      <button type="button" class="mdl-button" @click="deleteUser">Agree</button>
-      <button type="button" class="mdl-button close" @click="hideModal">Disagree</button>
-    </div>
-  </dialog>
-</div>
+        </div>
 
 
 
+
+      </div>
+      </section>
+      </div>
 </template>
 
 <script>

@@ -1,10 +1,15 @@
 <style></style>
 
 <template>
+<div class="col-md-12">
     <div class="mdl-grid demo-content">
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div class="mdl-card mdl-shadow--16dp util-center util-spacing-h--40px">
+        <h2 class="mdl-card__title-text mdl-color-text--white">
+                        Lavue
+                    </h2>
+        </div>
 
-  <main class="mdl-layout__content">
+  <main class="mdl-card__supporting-text mdl-grid">
 
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col">
@@ -39,7 +44,7 @@
   <button class="mdl-snackbar__action" type="button"></button>
     </div>
     </div>
-
+</div>
 </template>
 
 
