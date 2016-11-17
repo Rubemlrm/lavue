@@ -2,6 +2,9 @@
 /public/storage
 /public/css/
 /public/js/
+!/public/js/app.*
+!/public/css/AdminLTE.css
+!/public/css/skin-*
 /storage/*.key
 /vendor
 /.idea
