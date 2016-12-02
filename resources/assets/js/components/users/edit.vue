@@ -1,45 +1,44 @@
 <style></style>
 
 <template>
-    <div class="mdl-grid demo-content">
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <div class="mdl-grid demo-content">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-  <main class="mdl-layout__content">
+    <main class="mdl-layout__content">
 
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col">
-        <h4>Add User</h4>
-      </div>
+    <div class="mdl-cell mdl-cell--12-col">
+    <h4>Add User</h4>
+    </div>
     </div>
 
 
     <div class="mdl-grid md-cell--4-offset ">
-      <div class="mdl-cell mdl-cell--8-col">
-        <form action="#" >
+    <div class="mdl-cell mdl-cell--8-col">
+    <form action="#" >
 
 
-          <userForm :user="user"></userForm>
+    <userForm :user="user"></userForm>
 
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--10-col">
-              <button id="login" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" style="width:80px;" @click="addUser">
-              Save
-            </button>
-            </div>
-        </form>
-
-
+    <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--10-col">
+    <button id="login" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" style="width:80px;" @click="addUser">
+    Save
+    </button>
+    </div>
+    </form>
 
 
-  </main>
+
+
+    </main>
+    </div>
+
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
+    </div>
   </div>
-
-  <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-  <div class="mdl-snackbar__text"></div>
-  <button class="mdl-snackbar__action" type="button"></button>
-    </div>
-    </div>
-
 </template>
 
 

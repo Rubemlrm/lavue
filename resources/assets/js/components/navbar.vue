@@ -1,7 +1,7 @@
 <style>
 </style>
 <template>
-   <header class="main-header">
+  <header class="main-header">
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -21,22 +21,19 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-
-
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="https://api.adorable.io/avatars/160/abott@adorable.png" class="user-image" alt="User Image">
+              <img src="https://api.adorable.io/avatars/160/abott@adorable.png"
+                class="user-image" alt="User Image">
               <span class="hidden-xs">Rubem Mota</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="https://api.adorable.io/avatars/160/abott@adorable.png" class="img-circle" alt="User Image">
-
-                <p>
-                  Rubem Mota - Web Developer
-                </p>
+                <img src="https://api.adorable.io/avatars/160/abott@adorable.png"
+                  class="img-circle" alt="User Image">
+                <p>Rubem Mota - Web Developer</p>
               </li>
               <!-- Menu Body -->
 
@@ -53,7 +50,10 @@
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="#"
+              onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();"
+              data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>
@@ -64,8 +64,6 @@
 
 <script>
   export default {
-
-
 
   };
 </script>

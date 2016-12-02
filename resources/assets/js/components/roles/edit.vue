@@ -1,18 +1,10 @@
 <style></style>
 
 <template>
-
-
-    <div>EDIT</div>
-
-
-
+  <div>EDIT</div>
 </template>
 
 <script>
-
-export default {
-
-}
-
+  export default {
+  }
 </script>

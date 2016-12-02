@@ -1,72 +1,65 @@
 <template>
-
-<div>
-      <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input v-model="user.name" class="mdl-textfield__input" type="text" id="name" />
-                <label class="mdl-textfield__label" for="name">Name</label>
-              </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input  v-model="user.email" class="mdl-textfield__input" type="email" name="email" id="email"  />
-                <label class="mdl-textfield__label" for="email">Email</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input  v-model="user.password" class="mdl-textfield__input" type="password" name="password" id="password" />
-                <label class="mdl-textfield__label" for="password">Password</label>
-              </div>
-            </div>
-            <div class="mdl-cell mdl-cell--3-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input v-model="user.password2" class="mdl-textfield__input" type="password" name="password2" id="password" />
-                <label class="mdl-textfield__label" for="password2">Password</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield">
-                <select  v-model="user.role_id" name="role_id" id="role">
-                    <option v-for="role in roles" :value="role.id">{{role.name}}</option>
-                </select>
-
-              </div>
-            </div>
-          </div>
+  <div>
+    <div v-bind:class="{ form: 'form-group'}">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+        placeholder="Enter name"  v-model="user.name">
+      <span class="help-block"></span>
     </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email"
+        placeholder="Enter email" v-model="user.email">
+      <span class="help-block"></span>
+    </div>
+
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password"
+        placeholder="Enter password" v-model="user.password">
+      <span class="help-block"></span>
+    </div>
+    <div class="form-group">
+      <label for="password2">Confirm password</label>
+      <input type="password" class="form-control" id="password2"
+        placeholder="confirm password" v-model="user.password2">
+      <span class="help-block"></span>
+    </div>
+    <div class="form-group">
+      <label for="password2">Role</label>
+      <select  v-model="user.role_id" name="role_id" id="role"
+        class="form-control">
+        <option v-for="role in roles" :value="role.id">{{role.name}}</option>
+      </select>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-  props: ['user'],
+  export default {
+    props: ['user', 'errors'],
 
-  created() {
-    var vm = this;
-    this.getRoles();
-  },
-
-  data() {
-        return {
-          roles: []
-        }
-      },
-
-  methods: {
-    getRoles() {
-      this.$http.get('/api/roles').then((response) => {
-        this.roles = response.body;
-      }, (response) => {
-        console.log(response);
-      });
+    created() {
+      var vm = this;
+      this.getRoles();
     },
+
+    data() {
+      return {
+        roles: []
+      }
+    },
+
+    methods: {
+      getRoles() {
+        this.$http.get('/api/roles').then((response) => {
+          this.roles = response.body;
+        }, (response) => {
+          console.log(response);
+        });
+      },
+    }
   }
-}
 </script>

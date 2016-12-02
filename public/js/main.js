@@ -9392,9 +9392,9 @@ if (module.hot) {(function () {  var hotAPI = require("vueify/node_modules/vue-h
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":4,"vueify/node_modules/vue-hot-reload-api":5}],9:[function(require,module,exports){
@@ -9418,9 +9418,9 @@ if (module.hot) {(function () {  var hotAPI = require("vueify/node_modules/vue-h
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":4,"vueify/node_modules/vue-hot-reload-api":5}],10:[function(require,module,exports){
@@ -9455,8 +9455,6 @@ exports.default = {
 
   methods: {
     addUser: function addUser() {
-      var _this = this;
-
       var vm = this;
       var data = {
         email: this.user.email,
@@ -9468,28 +9466,14 @@ exports.default = {
 
       this.$http.post('/api/users', data).then(function (response) {
         if (response.body.status == "error") {
-          _this.displayError(response.body.errors);
+          console.log(response.body.errors);
         } else {
-          _this.displayError(response.body.success);
+          console.log(response.body.success);
         }
         console.log(response);
       }, function (response) {
-        _this.displayError(response.body);
+        console.log(response.body);
       });
-    },
-    displayError: function displayError(error) {
-      var snackbarContainer = document.querySelector('#demo-snackbar-example');
-
-      var message = "";
-      $.each(error, function (key, value) {
-        message += "" + value[0] + "\n";
-      });
-
-      var data = {
-        message: message,
-        timeout: 5000
-      };
-      snackbarContainer.MaterialSnackbar.showSnackbar(data);
     }
   },
   components: {
@@ -9500,8 +9484,8 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function(){with(this){return _h('div',{staticClass:"col-md-12"},[_h('div',{staticClass:"mdl-grid demo-content"},[_m(0)," ",_h('main',{staticClass:"mdl-card__supporting-text mdl-grid"},[_m(1)," ",_h('div',{staticClass:"mdl-grid md-cell--4-offset "},[_h('div',{staticClass:"mdl-cell mdl-cell--8-col"},[_h('form',{attrs:{"action":"#"}},[_h('userForm',{attrs:{"user":user}})," ",_h('div',{staticClass:"mdl-grid"},[_h('div',{staticClass:"mdl-cell mdl-cell--10-col"},[_h('button',{staticClass:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored",attrs:{"id":"login","type":"button","style":"width:80px;"},on:{"click":addUser}},["\n              Save\n            "])])])])])])])])," ",_m(2)])}}
-__vue__options__.staticRenderFns = [function(){with(this){return _h('div',{staticClass:"mdl-card mdl-shadow--16dp util-center util-spacing-h--40px"},[_h('h2',{staticClass:"mdl-card__title-text mdl-color-text--white"},["\n                        Lavue\n                    "])])}},function(){with(this){return _h('div',{staticClass:"mdl-grid"},[_h('div',{staticClass:"mdl-cell mdl-cell--12-col"},[_h('h4',["Add User"])])])}},function(){with(this){return _h('div',{staticClass:"mdl-js-snackbar mdl-snackbar",attrs:{"id":"demo-snackbar-example"}},[_h('div',{staticClass:"mdl-snackbar__text"})," ",_h('button',{staticClass:"mdl-snackbar__action",attrs:{"type":"button"}})])}}]
+__vue__options__.render = function(){with(this){return _h('div',{staticClass:"row"},[_h('div',{staticClass:"col-md-10"},[_h('div',{staticClass:"box box-primary"},[_m(0)," "," "," ",_h('form',{attrs:{"role":"form"}},[_h('div',{staticClass:"box-body"},[_h('userForm',{attrs:{"user":user}})])," "," ",_h('div',{staticClass:"box-footer"},[_h('button',{staticClass:"btn btn-primary",attrs:{"type":"submit"},on:{"click":function($event){addUser()}}},["Submit"])])])])," "])])}}
+__vue__options__.staticRenderFns = [function(){with(this){return _h('div',{staticClass:"box-header with-border"},[_h('h3',{staticClass:"box-title"},["Quick Example"])])}}]
 if (module.hot) {(function () {  var hotAPI = require("vueify/node_modules/vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -9509,7 +9493,7 @@ if (module.hot) {(function () {  var hotAPI = require("vueify/node_modules/vue-h
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"./form.vue":12,"vue":4,"vueify/node_modules/vue-hot-reload-api":5}],11:[function(require,module,exports){
@@ -9610,7 +9594,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  props: ['user'],
+  props: ['user', 'errors'],
 
   created: function created() {
     var vm = this;
@@ -9639,8 +9623,8 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function(){with(this){return _h('div',[_h('div',{staticClass:"mdl-grid"},[_h('div',{staticClass:"mdl-cell mdl-cell--3-col"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.name),expression:"user.name"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"name"},domProps:{"value":_s(user.name)},on:{"input":function($event){if($event.target.composing)return;user.name=$event.target.value}}})," ",_m(0)])])," ",_h('div',{staticClass:"mdl-cell mdl-cell--3-col"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.email),expression:"user.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","name":"email","id":"email"},domProps:{"value":_s(user.email)},on:{"input":function($event){if($event.target.composing)return;user.email=$event.target.value}}})," ",_m(1)])])])," ",_h('div',{staticClass:"mdl-grid"},[_h('div',{staticClass:"mdl-cell mdl-cell--3-col"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.password),expression:"user.password"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","name":"password","id":"password"},domProps:{"value":_s(user.password)},on:{"input":function($event){if($event.target.composing)return;user.password=$event.target.value}}})," ",_m(2)])])," ",_h('div',{staticClass:"mdl-cell mdl-cell--3-col"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.password2),expression:"user.password2"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","name":"password2","id":"password"},domProps:{"value":_s(user.password2)},on:{"input":function($event){if($event.target.composing)return;user.password2=$event.target.value}}})," ",_m(3)])])])," ",_h('div',{staticClass:"mdl-grid"},[_h('div',{staticClass:"mdl-cell mdl-cell--6-col"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield"},[_h('select',{directives:[{name:"model",rawName:"v-model",value:(user.role_id),expression:"user.role_id"}],attrs:{"name":"role_id","id":"role"},on:{"change":function($event){user.role_id=Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){return "_value" in o ? o._value : o.value})[0]}}},[_l((roles),function(role){return _h('option',{domProps:{"value":role.id}},[_s(role.name)])})])])])])])}}
-__vue__options__.staticRenderFns = [function(){with(this){return _h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"name"}},["Name"])}},function(){with(this){return _h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"email"}},["Email"])}},function(){with(this){return _h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"password"}},["Password"])}},function(){with(this){return _h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"password2"}},["Password"])}}]
+__vue__options__.render = function(){with(this){return _h('div',[_h('div',{class:{ form: 'form-group'}},[_m(0)," ",_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.name),expression:"user.name"}],staticClass:"form-control",attrs:{"type":"text","id":"name","placeholder":"Enter name"},domProps:{"value":_s(user.name)},on:{"input":function($event){if($event.target.composing)return;user.name=$event.target.value}}})," ",_m(1)])," ",_h('div',{staticClass:"form-group"},[_m(2)," ",_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.email),expression:"user.email"}],staticClass:"form-control",attrs:{"type":"email","id":"email","placeholder":"Enter email"},domProps:{"value":_s(user.email)},on:{"input":function($event){if($event.target.composing)return;user.email=$event.target.value}}})," ",_m(3)])," ",_h('div',{staticClass:"form-group"},[_m(4)," ",_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.password),expression:"user.password"}],staticClass:"form-control",attrs:{"type":"password","id":"password","placeholder":"Enter password"},domProps:{"value":_s(user.password)},on:{"input":function($event){if($event.target.composing)return;user.password=$event.target.value}}})," ",_m(5)])," ",_h('div',{staticClass:"form-group"},[_m(6)," ",_h('input',{directives:[{name:"model",rawName:"v-model",value:(user.password2),expression:"user.password2"}],staticClass:"form-control",attrs:{"type":"password","id":"password2","placeholder":"confirm password"},domProps:{"value":_s(user.password2)},on:{"input":function($event){if($event.target.composing)return;user.password2=$event.target.value}}})," ",_m(7)])," ",_h('div',{staticClass:"form-group"},[_m(8)," ",_h('select',{directives:[{name:"model",rawName:"v-model",value:(user.role_id),expression:"user.role_id"}],staticClass:"form-control",attrs:{"name":"role_id","id":"role"},on:{"change":function($event){user.role_id=Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){return "_value" in o ? o._value : o.value})[0]}}},[_l((roles),function(role){return _h('option',{domProps:{"value":role.id}},[_s(role.name)])})])])])}}
+__vue__options__.staticRenderFns = [function(){with(this){return _h('label',{attrs:{"for":"name"}},["Name"])}},function(){with(this){return _h('span',{staticClass:"help-block"})}},function(){with(this){return _h('label',{attrs:{"for":"email"}},["Email address"])}},function(){with(this){return _h('span',{staticClass:"help-block"})}},function(){with(this){return _h('label',{attrs:{"for":"password"}},["Password"])}},function(){with(this){return _h('span',{staticClass:"help-block"})}},function(){with(this){return _h('label',{attrs:{"for":"password2"}},["Confirm password"])}},function(){with(this){return _h('span',{staticClass:"help-block"})}},function(){with(this){return _h('label',{attrs:{"for":"password2"}},["Role"])}}]
 if (module.hot) {(function () {  var hotAPI = require("vueify/node_modules/vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -9705,9 +9689,9 @@ if (module.hot) {(function () {  var hotAPI = require("vueify/node_modules/vue-h
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"vue":4,"vueify/node_modules/vue-hot-reload-api":5}],14:[function(require,module,exports){
