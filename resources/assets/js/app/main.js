@@ -2,7 +2,6 @@
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
-
 // Load vue libs
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -68,11 +67,12 @@ var router = new VueRouter({
 });
 
 //extend vue to handle with routing
+
 new Vue(
-    Vue.util.extend(
-      {
-        router
-      },
-      App
-    )
-  ).$mount('#app')
+      Vue.util.extend(
+        {
+          router
+        },
+        App
+      )
+    ).$mount('#app')

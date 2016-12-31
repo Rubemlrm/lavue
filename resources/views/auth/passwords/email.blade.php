@@ -2,43 +2,73 @@
 
 <!-- Main Content -->
 @section('content')
-<div class="login-box">
-  <div class="login-logo">
-    <a href="#"><b>Lavue</b></a>
-  </div>
-  <div class="login-box-body">
-    <p class="login-box-msg">Password Recover</p>
+<section class="hero is-fullheight is-dark is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6 is-offset-3">
+                    <h1 class="title">
+                        Reset your password
+                    </h1>
+                    <div class="box">
+                        <form action="{{ url('/password/email') }}" method="post">
+                            {{ csrf_field() }}
+                            <label class="label">
+                                Email
+                            </label>
+                            <p class="control">
+                                <input class="input" placeholder="lavue@lavue.pt" type="text" name="email"
+                                value="{{ $email or old('email') }}">
+                                    <span class="glyphicon glyphicon-envelope form-control-feedback">
+                                    </span>
+                                </input>
+                            </p>
 
-    <form action="{{ url('/password/email') }}" method="post">
-      {{ csrf_field() }}
+                            @if(Session::get('status') != null)
+                                <div class="notification is-success">
+                                    <button aria-hidden="true" data-dismiss="alert" type="button" class="delete">
+                                    </button>
+                                      {{Session::get('status')}}
+                                </div>
 
-      <!-- email field -->
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email"
-          name="email" {{ old('email') }}>
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
+                            @endif
 
-      <!-- Errors display -->
-      @if ($errors->has('email'))
-        <div class="alert alert-danger alert-dismissible">
-          <button type="button" class="close" data-dismiss="alert"
-            aria-hidden="true">×</button>
-          <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-          {{ $errors->first('email') }}
+
+                            <!-- Errors Display -->
+                            @if ($errors->has('email'))
+                            <div class="notification is-danger">
+                                <button aria-hidden="true" data-dismiss="alert" type="button" class="delete">
+                                </button>
+                                <h4>
+                                    <i class="icon fa fa-ban">
+                                    </i>
+                                    Alert!
+                                </h4>
+                                {{ $errors->first('email') }}
+                            </div>
+                            @endif
+                            <hr>
+                                <p class="control">
+                                    <button type="submit" class="button is-primary">
+                                        Submit
+                                    </button>
+                                    <button type="reset" class="button is-default">
+                                        Cancel
+                                    </button>
+                                </p>
+                            </hr>
+                        </form>
+                        <p class="has-text-centered">
+                            <a href="{{ url('/') }}">
+                                Return to login
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      @endif
-
-      <!-- Submit buton -->
-      <div class="row">
-        <div class="col-xs-8 col-sm-offset-2">
-        <button type="submit" class="btn btn-primary btn-block btn-flat">
-          Send Password Reset Link</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
+</section>
 @endsection
 
 

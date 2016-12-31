@@ -18,7 +18,8 @@ elixir(mix => {
     mix.sass('./node_modules/bulma/bulma.sass')
        .sass('app.sass')
        .sass('login.sass')
-       .webpack('main.js')
+       .webpack('app/main.js')
+       .webpack('general/utils.js')
        .browserSync({
         proxy: 'local.dev'
        });
