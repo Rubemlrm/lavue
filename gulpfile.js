@@ -1,7 +1,8 @@
 const elixir = require('laravel-elixir');
 
-//require('laravel-elixir-vue-2');
-require('laravel-elixir-vueify');
+require('laravel-elixir-vue-2')
+
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -14,7 +15,11 @@ require('laravel-elixir-vueify');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
+    mix.sass('./node_modules/bulma/bulma.sass')
+       .sass('app.sass')
        .sass('login.sass')
-       .browserify('main.js');
+       .webpack('main.js')
+       .browserSync({
+        proxy: 'local.dev'
+       });
 });

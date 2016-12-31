@@ -27,7 +27,7 @@
       </div>
 
       <!-- Errors Display -->
-      <div class="row">
+
         @if ($errors->has('email'))
           <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert"
@@ -46,6 +46,14 @@
         </div>
       @endif
 
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="remember"> Remember Me
+          </label>
+        </div>
+
+
+
       <!-- Submit button -->
       <div class="row">
         <div class="col-xs-8 col-sm-offset-2">
@@ -55,7 +63,7 @@
       </div>
     </form>
 
-    <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
+    <p class="text-center"><a href="{{ url('/password/reset') }}">I forgot my password</a></p>
 
   </div>
   <!-- /.login-box-body -->

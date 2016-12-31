@@ -1,19 +1,19 @@
 <style></style>
 
 <template>
-  <div class="wrapper">
-    <navbar></navbar>
+  <div class="columns">
     <sidebar></sidebar>
-
-    <div class="content-wrapper">
-      <router-view></router-view>
+    <div class="column is-10">
+        <navbar></navbar>
+        <section class="section">
+            <router-view></router-view>
+        </section>
     </div>
-  </div>
+</div>
+
 </template>
 
 <script>
-
-var Vue = require('vue');
 
 export default {
 

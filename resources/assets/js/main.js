@@ -1,15 +1,31 @@
-//load bootstrap stuff
+// Require bootstrap and jquery
+window.$ = window.jQuery = require('jquery');
+require('bootstrap-sass');
+
+
+// Load vue libs
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 import vueResource from 'vue-resource'
-import App from './components/app.vue'
-import Login from './components/login.vue'
-import userIndex from './components/users/index.vue'
-import userEdit from './components/users/edit.vue'
-import userAdd from './components/users/add.vue'
+
+/**
+ * tell vue to user router and resource
+ */
 Vue.use(VueRouter)
 Vue.use(vueResource)
 
-Vue.config.debug = true
+/**
+ * import user defined components
+ */
+import App from './components/app.vue'
+import userIndex from './components/users/index.vue'
+import userEdit from './components/users/edit.vue'
+import userAdd from './components/users/add.vue'
+
+// Register global components
+Vue.component('sidebar', require('./components/sidebar.vue'))
+Vue.component('navbar', require('./components/navbar.vue'))
+
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware
@@ -20,9 +36,11 @@ Vue.http.interceptors.push((request, next) => {
         next()
     })
 
-//register global components
-Vue.component('sidebar', require('./components/sidebar.vue'))
-Vue.component('navbar', require('./components/navbar.vue'))
+
+// set custom configs
+Vue.config.debug = true
+Vue.http.options.root = "/api";
+
 
 //init route list
 const routes = [

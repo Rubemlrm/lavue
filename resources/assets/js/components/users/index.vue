@@ -1,55 +1,53 @@
 <style></style>
 
 <template>
-  <div>
-    <section class="content-header">
-      <h1>User List</h1>
-    </section>
-    <section class="content">
-      <div class="row">
-          <div class="col-xs-12">
-            <div class="box with-border">
-              <div class="box-header"></div>
-              <!-- /.box-header -->
-              <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Username</th>
-                      <th>Email</th>
-                      <th>Role</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="user in users">
-                      <td>{{user.name}}</td>
-                      <td>{{user.email}}</td>
-                      <td>{{user.role.name}}</td>
-                      <td>
-                        <router-link to="/users/edit">
-                          <a @click="showModal">
-                            <i class="fa fa-edit"></i>
-                          </a>
-                        </router-link>
-                        <a @click="showModal">
-                          <i class="fa fa-ban"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+<div class="column is-full-desktop is-full-mobile">
+  <section class="panel">
+    <p class="panel-heading">
+      Users
+    </p>
+    <div class="panel-block">
+      <table class="table is-bordered is-striped is-narrow">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.role.name}}</td>
+            <td>
+              <div class="control is-grouped">
+                <p class="control">
+                  <router-link to="/users/edit">
+                    <a class="button is-primary">
+                      <i class="fa fa-edit"></i>  Edit
+                    </a>
+                  </router-link>
+                </p>
+                <p class="control">
+                  <a class="button is-danger" @click="showModal">
+                    <i class="fa fa-ban"></i> Delete
+                  </a>
+                </p>
               </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-            <router-link to="/users/add">
-              <button class="btn btn-info pull-right" >Add</button>
-            </router-link>
-          </div>
-      </div>
-    </section>
-  </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <p class="control">
+      <router-link to="/users/add">
+        <button class="button is-primary" >Add</button>
+      </router-link>
+    </p>
+    </div>
+  </section>
+</div>
 </template>
 
 <script>
@@ -60,6 +58,7 @@
     },
 
     created() {
+
       var vm = this;
       this.updateList();
     },

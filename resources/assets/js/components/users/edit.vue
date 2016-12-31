@@ -22,9 +22,22 @@
 
     <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--10-col">
-    <button id="login" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" style="width:80px;" @click="addUser">
-    Save
-    </button>
+
+          <div class="control is-grouped">
+                <p class="control">
+                  <router-link to="/users/edit">
+                    <button class="button is-primary" @click="addUser"  id="login">
+                      <i class="fa fa-edit"></i>  Edit
+                    </button>
+                  </router-link>
+                </p>
+                <p class="control">
+                  <button class="button is-danger" @click="showModal">
+                    <i class="fa fa-ban"></i> Delete
+                  </button>
+                </p>
+              </div>
+
     </div>
     </form>
 
@@ -32,11 +45,6 @@
 
 
     </main>
-    </div>
-
-    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
-    <div class="mdl-snackbar__text"></div>
-    <button class="mdl-snackbar__action" type="button"></button>
     </div>
   </div>
 </template>
