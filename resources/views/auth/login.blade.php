@@ -70,7 +70,7 @@
                                     <button type="submit" class="button is-primary">
                                         Login
                                     </button>
-                                    <button type="reset" class="button is-default">
+                                    <button type="reset" class="button is-cancel">
                                         Cancel
                                     </button>
                                 </p>
