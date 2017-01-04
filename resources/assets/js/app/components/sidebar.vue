@@ -17,18 +17,22 @@
             </p>
 
           </div>
+          <ul class="menu-list">
+                <li><router-link to="/users">
+                  <i class="fa fa-circle-o"></i>Users
+                  </router-link>
+                </li>
 
-              <router-link to="/users">
-                <i class="fa fa-circle-o"></i>Users
-                </router-link>
-
-              <a href="../../index2.html">
+              <li>
+              <a href="../../index2.html" class="is-outlined
+">
                 <i class="fa fa-circle-o"></i> Roles
               </a>
+              </li>
 
-          <a href="" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">Logout</a>
-
+          <li><a href="" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">Logout</a></li>
+        </ul>
         </div>
       </div>
     </aside>

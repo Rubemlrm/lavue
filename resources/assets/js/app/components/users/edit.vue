@@ -26,13 +26,13 @@
           <div class="control is-grouped">
                 <p class="control">
                   <router-link to="/users/edit">
-                    <button class="button is-primary" @click="addUser"  id="login">
+                    <button class="button is-primary"  id="login">
                       <i class="fa fa-edit"></i>  Edit
                     </button>
                   </router-link>
                 </p>
                 <p class="control">
-                  <button class="button is-danger" @click="showModal">
+                  <button class="button is-danger">
                     <i class="fa fa-ban"></i> Delete
                   </button>
                 </p>

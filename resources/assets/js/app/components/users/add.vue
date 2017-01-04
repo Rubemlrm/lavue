@@ -1,35 +1,36 @@
 <style></style>
 
 <template>
-  <div class="row">
-    <div class="col-md-10">
       <!-- general form elements -->
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Quick Example</h3>
-        </div>
+      <section class="panel">
+       <p class="panel-heading">
+             Add User
+        </p>
+        <div class="panel-block">
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form">
-          <div class="box-body">
-            <userForm :user="user"></userForm>
-          </div>
+        <form role="form" @submit.prevent="addUser">
+          <userForm :user="user" :errors="errors"></userForm>
           <!-- /.box-body -->
 
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary" @click="addUser()">
+          <div class="control">
+            <button type="submit" class="button is-primary">
               Submit</button>
+
+            <button type="reset" class="button is-danger">
+                  Cancel
+            </button>
           </div>
         </form>
       </div>
+      </section>
       <!-- /.box -->
-    </div>
-  </div>
 </template>
 
 
 <script>
   import userForm from './form.vue'
+  import Errors from '../../helpers/errors.js'
     export default {
 
       data() {
@@ -40,6 +41,7 @@
             email: '',
             role_id: '1'
           },
+          errors: {},
         }
       },
 
@@ -60,7 +62,8 @@
 
         this.$http.post('/api/users', data).then((response) => {
           if(response.body.status == "error") {
-            console.log(response.body.errors);
+            this.errors =response.body.errors ;
+            return this.errors;
           } else {
             console.log(response.body.success);
           }
