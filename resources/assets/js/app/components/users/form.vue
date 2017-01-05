@@ -6,14 +6,14 @@
       <label for="name">Name</label>
       <input type="text" class="input" id="name"
         placeholder="Enter name"  v-model="user.name">
-      <span class="help is-danger" v-if="errors.name" v-text="errors.name[0]"></span>
+      <span class="help is-danger" v-if="errors.find('name')" v-text="errors.show('name')"></span>
     </div>
 
     <div class="control is-expanded">
       <label for="email">Email address</label>
       <input type="email" class="input" id="email"
         placeholder="Enter email" v-model="user.email" >
-      <span class="help is-danger" v-if="errors.email" v-text="errors.email[0]"></span>
+      <span class="help is-danger" v-if="errors.find('email')" v-text="errors.show('email')"></span>
     </div>
     </div>
   </div>
@@ -24,13 +24,13 @@
         <label for="password">Password</label>
         <input type="password" class="input" id="password"
           placeholder="Enter password" v-model="user.password">
-        <span class="help is-danger" v-if="errors.password" v-text="errors.password[0]"></span>
+        <span class="help is-danger" v-if="errors.find('password')" v-text="errors.show('password')"></span>
       </div>
       <div class="control is-expanded">
         <label for="password2">Confirm password</label>
         <input type="password" class="input" id="password2"
           placeholder="confirm password" v-model="user.password2">
-        <span class="help is-danger" v-if="errors.password2" v-text="errors.password2[0]"></span>
+        <span class="help is-danger" v-if="errors.find('password2')" v-text="errors.show('password2')"></span>
       </div>
     </div>
   </div>

@@ -41,7 +41,7 @@
             email: '',
             role_id: '1'
           },
-          errors: {},
+          errors: new Errors(),
         }
       },
 
@@ -62,7 +62,7 @@
 
         this.$http.post('/api/users', data).then((response) => {
           if(response.body.status == "error") {
-            this.errors =response.body.errors ;
+            this.errors.store(response.body.errors);
             return this.errors;
           } else {
             console.log(response.body.success);
