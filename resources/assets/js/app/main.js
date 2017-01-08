@@ -15,7 +15,7 @@ Vue.use(vueResource)
 // Register global components
 Vue.component('sidebar', require('./components/sidebar.vue'))
 Vue.component('navbar', require('./components/navbar.vue'))
-
+Vue.component('alert', require('./components/other/alert.vue'))
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware
@@ -26,6 +26,8 @@ Vue.http.interceptors.push((request, next) => {
         next()
 })
 
+
+window.Event = new Vue();
 
 // set custom configs
 Vue.config.debug = true

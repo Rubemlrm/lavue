@@ -9,6 +9,9 @@
         <section class="section">
             <router-view></router-view>
         </section>
+
+
+        <alert></alert>
     </div>
 </div>
 
@@ -17,6 +20,7 @@
 <script>
 
 export default {
-
+    created() {
+    },
 }
 </script>

@@ -6,6 +6,8 @@
        <p class="panel-heading">
              Add User
         </p>
+
+
         <div class="panel-block">
         <!-- /.box-header -->
         <!-- form start -->
@@ -22,6 +24,7 @@
             </button>
           </div>
         </form>
+
       </div>
       </section>
       <!-- /.box -->
@@ -61,15 +64,27 @@
         };
 
         this.$http.post('/api/users', data).then((response) => {
-          if(response.body.status == "error") {
-            this.errors.store(response.body.errors);
+          var _response = response.body;
+          if(_response.status == "error") {
+            this.errors.store(_response.errors);
+            var results = {
+              type: 'is-danger',
+              message: _response.message,
+              show: true
+            };
+            Event.$emit('displayAlert', results);
             return this.errors;
           } else {
-            console.log(response.body.success);
+            var results = {
+              type: 'is-success',
+              message: _response.message,
+              show: true
+            };
+            Event.$emit('displayAlert', results);
+            this.errors.destroy();
           }
-          console.log(response);
         }, (response) => {
-          console.log(response.body);
+          console.log(_response);
           });
         },
     },

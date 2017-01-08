@@ -26,8 +26,9 @@ class RolesController extends Controller
      * @param  RoleRepository $roles object that stores roles repository
      * @return array   list of all roles
      */
-    public function index(RoleRepository $roles)
-    {
+    public function index(RoleRepository $roles) {
         return $roles->all(['id','name'])->toArray();
+    
     }
+
 }

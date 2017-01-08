@@ -12,6 +12,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
       rel="stylesheet">
       <link href="{{asset('css/bulma.css')}}" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
       <link href="{{asset('css/app.css')}}" rel="stylesheet"></link>
 
     <script>

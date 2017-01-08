@@ -57,7 +57,7 @@
       return { users : []}
     },
 
-    created() {
+    beforeMount() {
 
       var vm = this;
       this.updateList();

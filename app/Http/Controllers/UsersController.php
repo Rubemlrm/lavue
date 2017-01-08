@@ -16,6 +16,7 @@ use App\Http\Requests;
 use App\Http\Requests\UserFormRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Users Controller for api crud actions
@@ -30,7 +31,6 @@ class UsersController extends Controller
      */
     public function index(UserRepository $users)
     {
-
         return $users->all()->toArray();
     }
 
@@ -49,7 +49,7 @@ class UsersController extends Controller
 
         //validate user creation
         if ($user->create($data)) {
-            return json_encode(["status" => "success", "message" => "cool"]);
+            return new JsonResponse(["status" => "success", "message" => "cool"], 200);
         }
 
         return json_encode("false");
